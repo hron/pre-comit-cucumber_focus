@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.version  = PreCommit::CucumberFocus::VERSION
   s.author   = "Aleksei Gusev"
   s.email    = "aleksei.gusev@gmail.com"
-  s.homepage = "https://github.com/pre-commit-plugins/pre-commit-cucumber_focus"
+  s.homepage = "https://github.com/hron/pre-commit-cucumber_focus"
   s.license  = "MIT"
   s.summary  = "Finds cucumber scenarios with with specific tags (e.g. @focus)"
 
