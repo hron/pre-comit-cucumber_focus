@@ -7,18 +7,20 @@ See the file LICENSE for copying permission.
 require 'minitest_helper'
 require 'plugins/pre_commit/checks/cucumber_focus'
 
-describe PreCommit::Checks::Cucumber_focus do
-  let(:check){ PreCommit::Checks::Cucumber_focus.new(nil, nil, []) }
+describe PreCommit::Checks::CucumberFocus do
+  let(:check){ PreCommit::Checks::CucumberFocus.new(nil, nil, []) }
 
-  it "does nothing" do
-    check.send(:run_check, "rake").must_equal(nil)
+  it "ignores files if they don't ends with .feature" do
+    check.call([fixture_file("ruby-source.rb")]).must_equal(nil)
   end
 
-  it "checks files" do
-    Dir.chdir(test_files) do
-      # TODO: create example files in test/files
-      check.send(:run_check, ".keep").must_equal(nil)
-    end
+  it "ignores features files without @focus tag" do
+    check.call([fixture_file("no-focus.feature")]).must_equal(nil)
   end
 
+  it "return error list if a feature file contains @focus tag" do
+    check.call([fixture_file("file-with-focused-scenario.feature")]).to_s.must_equal("\
+@focus found in features:
+test/files/file-with-focused-scenario.feature:3:  @focus")
+  end
 end

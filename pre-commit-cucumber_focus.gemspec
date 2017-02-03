@@ -12,7 +12,7 @@ require 'pre-commit/cucumber_focus/version'
 
 Gem::Specification.new do |s|
   s.name     = "pre-commit-cucumber_focus"
-  s.version  = PreCommit::Cucumber_focus::VERSION
+  s.version  = PreCommit::CucumberFocus::VERSION
   s.author   = "Aleksei Gusev"
   s.email    = "aleksei.gusev@gmail.com"
   s.homepage = "https://github.com/pre-commit-plugins/pre-commit-cucumber_focus"
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("guard-minitest", "~> 2.0")
   s.add_development_dependency("minitest", "~> 4.0")
   s.add_development_dependency("minitest-reporters", "~> 0")
+  s.add_development_dependency("minitest-around", "~> 0")
   s.add_development_dependency("mocha", "~>1.1")
   s.add_development_dependency("rake", "~> 10.0")
 end
